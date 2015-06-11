@@ -281,7 +281,10 @@ void loop()
         c[7] = (uint16_t)(ccData[17] & 0xF0) << 4 | ccData[15];
         //sei();
         for (int i = 0; i < 8; i++) {
-            Servo_data[i] = 0.67 * c[i];
+            // Simplification of map(ci, 1482, 3018, 1000, 2000) --
+            // observed min and max values from the radio to desired
+            // output values.
+            Servo_data[i] = (ci - 1482) * 0.6512687 + 1000;
             if (Servo_data[i] < 900) { //added new
                 Servo_data[i] = 1500; //added new
                 Servo_data[2] = 1000;
