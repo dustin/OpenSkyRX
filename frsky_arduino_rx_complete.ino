@@ -203,7 +203,7 @@ void updateRSSI() {
         rssi = (((rssi_dec - 256) / 2)) - rssi_offset;
     }
 
-  #if defined(DEBUG_RSSI2)
+  #if defined(DEBUG_RSSI)
     Serial.print(millis());
     Serial.print("\t");
     Serial.println(rssi);
@@ -290,9 +290,6 @@ void loop()
         }
         #if defined(RSSI_OVER_PPM)
           ppm[RSSI_OVER_PPM] = map(rssi, rssi_min, rssi_max, 1000, 2000);
-        #endif
-        #if defined(DEBUG5)
-                //Serial.println(rssi);
         #endif
         #if defined(DEBUG0)
                 for (int i = 0; i < 8; i++) {
